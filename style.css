@@ -44,11 +44,15 @@ body {
   padding: 20px;
   font-family: var(--font-body);
   color: var(--ink);
-  background: linear-gradient(
-    var(--sky) 0%, var(--sky-light) 62%,
-    var(--grass) 62%, var(--grass) 66%,
-    var(--dirt) 66%
-  ) fixed;
+  background-color: var(--sky);
+  background-image: 
+
+    linear-gradient(rgba(255, 255, 255, 0.08) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 2px, transparent 2px),
+    radial-gradient(circle at 50% 35%, transparent 30%, rgba(0, 0, 0, 0.25) 100%),
+    linear-gradient(180deg, var(--sky) 0%, var(--sky-light) 60%, var(--grass-dark) 100%);
+  background-size: 24px 24px, 24px 24px, 100% 100%, 100% 100%;
+  background-attachment: fixed;
 }
 
 [hidden] { display: none !important; }
@@ -230,6 +234,18 @@ textarea:focus-visible { outline: 3px dashed var(--duck); outline-offset: 3px; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sky: #141726;
+    --sky-light: #20263f;
+    --grass: #2d5a1b;
+    --grass-dark: #121524;
+    --paper: #1c2136;
+    --ink: #f2efe4;
+    --muted: #a9b0c7;
+  }
 }
 
 /* ---------- Form helpers ---------- */

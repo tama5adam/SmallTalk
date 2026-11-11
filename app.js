@@ -109,6 +109,10 @@
     el.badge.textContent = cfg.badge;
     el.badge.classList.toggle("badge--respond", round.type === "respond");
 
+    // Switch tutor icon: tutor2.png when a question is displayed, tutor1 otherwise
+    const avatar = document.getElementById("avatar-img");
+    if (avatar) avatar.src = round.type === "respond" ? "img/tutor2.png" : "img/tutor1.png";
+
     el.prompt.textContent = round.prompt;
     el.prompt.classList.remove("is-entering");
     void el.prompt.offsetWidth; // restart animation
