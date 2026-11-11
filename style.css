@@ -176,11 +176,15 @@ h2 { margin: 0 0 14px; font-size: 14px; line-height: 1.6; }
   padding: 8px 10px;
   font-size: 11px;
   line-height: 1.6;
-  color: #1d2333;
+  color: var(--ink); 
   background: var(--sky-light);
   border: var(--px) solid var(--ink);
 }
-.badge--respond { background: var(--gold); }
+
+.badge--respond {
+  background: var(--gold);
+  color: #1d2333; 
+}
 
 .prompt {
   min-height: 90px;
@@ -236,9 +240,27 @@ textarea:focus-visible { outline: 3px dashed var(--duck); outline-offset: 3px; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sky: #141726;
+    --sky-light: #2c3656;
+    --grass: #3b7a24;
+    --grass-dark: #121524;
+    --paper: #1c2136;
+    --ink: #f2efe4;
+    --muted: #cbd2e8; 
+  }
+}
+
 
 
 /* ---------- Form helpers ---------- */
 fieldset.group { min-width: 0; padding: 0; border: 0; }
 .group__label { padding: 0; margin-bottom: 10px; font-weight: 800; }
-.field-label { display: block; margin-top: 16px; font-size: 14px; color: var(--muted); }
+.field-label {
+  display: block;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink); 
+}
