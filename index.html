@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmallTalk – B2/C1 Speaking &amp; Writing Practice</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="cabinet">
+
+    <header class="top">
+      <!-- Avatar placeholder: replace the <svg> with <img src="tutor.png" alt="Tutor"> (64x64 or 128x128 pixel art) -->
+      <div class="avatar" aria-hidden="true">
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <rect width="16" height="16" fill="#bfe6fb"/>
+          <rect x="4" y="2" width="8" height="2" fill="#3a2a1a"/>
+          <rect x="3" y="3" width="10" height="4" fill="#3a2a1a"/>
+          <rect x="4" y="5" width="8" height="7" fill="#f2c9a0"/>
+          <rect x="5" y="7" width="2" height="2" fill="#1d2333"/>
+          <rect x="9" y="7" width="2" height="2" fill="#1d2333"/>
+          <rect x="6" y="10" width="4" height="1" fill="#c0503a"/>
+          <rect x="2" y="13" width="12" height="3" fill="#e2573b"/>
+          <rect x="7" y="12" width="2" height="1" fill="#f2c9a0"/>
+        </svg>
+      </div>
+      <div>
+        <h1>SmallTalk</h1>
+        <p class="tagline">Answer it. Ask it. Level up your English.</p>
+      </div>
+    </header>
+
+    <!-- Setup -->
+    <section id="setup-screen" aria-labelledby="setup-title">
+      <h2 id="setup-title">Choose your game</h2>
+
+      <fieldset class="group">
+        <legend class="group__label">Level</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="level" value="b2" checked><span>B2 (Upper Intermediate)</span></label>
+          <label class="choice"><input type="radio" name="level" value="c1"><span>C1 (Advanced)</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend class="group__label">Session length</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="rounds" value="10" checked><span>10 Rounds</span></label>
+          <label class="choice"><input type="radio" name="rounds" value="20"><span>20 Rounds</span></label>
+        </div>
+      </fieldset>
+
+      <button type="button" class="btn" id="start-btn">Start game</button>
+      <p class="hint" id="setup-error" role="alert" hidden></p>
+    </section>
+
+    <!-- Practice -->
+    <section id="practice-screen" aria-label="Practice round" hidden>
+      <div class="row"><span class="tracker" id="round-tracker"></span></div>
+      <div class="progress" id="progress" role="progressbar" aria-label="Session progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <span class="progress__fill" id="progress-fill"></span>
+      </div>
+
+      <span class="badge" id="type-badge"></span>
+      <div class="prompt" id="prompt-box" aria-live="polite"></div>
+
+      <label for="answer-input" class="field-label" id="input-label">Your response</label>
+      <textarea id="answer-input" placeholder="Type here..."></textarea>
+      <p class="hint" id="input-hint"></p>
+
+      <div class="row">
+        <button type="button" class="btn btn--green" id="quit-btn">Quit</button>
+        <button type="button" class="btn" id="next-btn" disabled>Next</button>
+      </div>
+    </section>
+
+    <!-- Completion -->
+    <section id="done-screen" aria-labelledby="done-title" hidden>
+      <h2 id="done-title">Stage clear!</h2>
+      <p>Great work. Download your answers and bring them to your next lesson.</p>
+      <div class="stats">
+        <div class="stat"><b id="stat-level"></b>Level</div>
+        <div class="stat"><b id="stat-rounds"></b>Rounds</div>
+        <div class="stat"><b id="stat-words"></b>Words</div>
+      </div>
+      <div class="row">
+        <button type="button" class="btn" id="export-btn">Download .md</button>
+        <button type="button" class="btn btn--green" id="again-btn">Play again</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Order matters: data first, then logic -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

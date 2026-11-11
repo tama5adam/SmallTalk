@@ -1,0 +1,238 @@
+/* SmallTalk – 16-bit arcade styles */
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;800&display=swap");
+
+/* ---------- Tokens ---------- */
+:root {
+  --sky: #7ec8f2;
+  --sky-light: #bfe6fb;
+  --grass: #4f9a2f;
+  --grass-dark: #2f6b1a;
+  --dirt: #8a5a2b;
+  --ink: #1d2333;
+  --paper: #fffdf5;
+  --duck: #e2573b;
+  --gold: #f5b82e;
+  --muted: #5a6275;
+  --disabled: #9aa0ad;
+  --px: 4px;
+
+  --font-pixel: "Press Start 2P", ui-monospace, monospace;
+  --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sky: #1f2a52;
+    --sky-light: #2c3a70;
+    --grass: #3b7a24;
+    --grass-dark: #245014;
+    --paper: #232842;
+    --ink: #f2efe4;
+    --muted: #a9b0c7;
+  }
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { min-height: 100%; margin: 0; }
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: linear-gradient(
+    var(--sky) 0%, var(--sky-light) 62%,
+    var(--grass) 62%, var(--grass) 66%,
+    var(--dirt) 66%
+  ) fixed;
+}
+
+[hidden] { display: none !important; }
+
+h1, h2, .badge, .btn, .tracker, .stat b { font-family: var(--font-pixel); font-weight: 400; }
+
+/* ---------- Cabinet ---------- */
+.cabinet {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  padding: 28px;
+  background: var(--paper);
+  border: var(--px) solid var(--ink);
+  box-shadow:
+    0 0 0 var(--px) var(--paper),
+    0 0 0 calc(var(--px) * 2) var(--ink),
+    12px 12px 0 calc(var(--px) * 2) rgba(0, 0, 0, 0.35);
+}
+
+/* CRT scanlines (decorative, never blocks clicks) */
+.cabinet::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.045) 0, rgba(0, 0, 0, 0.045) 1px,
+    transparent 1px, transparent 3px
+  );
+}
+
+/* ---------- Header ---------- */
+.top { display: flex; gap: 20px; align-items: center; margin-bottom: 22px; }
+
+.avatar {
+  flex: none;
+  width: 96px;
+  height: 96px;
+  background: var(--sky-light);
+  border: var(--px) solid var(--ink);
+  image-rendering: pixelated;
+}
+.avatar svg, .avatar img { display: block; width: 100%; height: 100%; shape-rendering: crispEdges; image-rendering: pixelated; }
+
+h1 {
+  margin: 0 0 10px;
+  font-size: clamp(20px, 5vw, 30px);
+  line-height: 1.3;
+  color: var(--duck);
+  text-shadow: 3px 3px 0 var(--ink);
+}
+h2 { margin: 0 0 14px; font-size: 14px; line-height: 1.6; }
+.tagline { margin: 0; font-size: 15px; line-height: 1.5; color: var(--muted); }
+
+/* ---------- Setup ---------- */
+.group { margin: 22px 0; }
+.group > p { margin: 0 0 10px; font-weight: 800; }
+.choices { display: flex; flex-wrap: wrap; gap: 12px; }
+.choice { position: relative; flex: 1 1 200px; }
+.choice input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.choice span {
+  display: block;
+  padding: 14px;
+  font-weight: 800;
+  text-align: center;
+  background: var(--paper);
+  border: var(--px) solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 0.12s, box-shadow 0.12s, background 0.12s;
+}
+.choice input:checked + span {
+  background: var(--gold);
+  color: #1d2333;
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+.choice input:focus-visible + span { outline: 3px dashed var(--duck); outline-offset: 3px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  padding: 16px 20px;
+  font-size: 13px;
+  color: #fff;
+  background: var(--duck);
+  border: var(--px) solid var(--ink);
+  box-shadow: 5px 5px 0 var(--ink);
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.btn:hover:not(:disabled) { transform: translate(-1px, -1px); box-shadow: 7px 7px 0 var(--ink); }
+.btn:active:not(:disabled) { transform: translate(5px, 5px); box-shadow: 0 0 0 var(--ink); }
+.btn:disabled { background: var(--disabled); color: #e8e8e8; box-shadow: 2px 2px 0 var(--ink); cursor: not-allowed; }
+.btn:focus-visible { outline: 3px dashed var(--ink); outline-offset: 4px; }
+.btn--green { background: var(--grass); }
+
+.row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; }
+
+/* ---------- Practice screen ---------- */
+.tracker { font-size: 12px; }
+
+.progress {
+  height: 20px;
+  margin: 12px 0 20px;
+  padding: 2px;
+  background: var(--paper);
+  border: var(--px) solid var(--ink);
+}
+.progress__fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: repeating-linear-gradient(90deg, var(--grass) 0 10px, var(--grass-dark) 10px 12px);
+  transition: width 0.4s ease;
+}
+
+.badge {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 8px 10px;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #1d2333;
+  background: var(--sky-light);
+  border: var(--px) solid var(--ink);
+}
+.badge--respond { background: var(--gold); }
+
+.prompt {
+  min-height: 90px;
+  padding: 20px;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.55;
+  background: var(--paper);
+  border: var(--px) solid var(--ink);
+  box-shadow: inset 0 0 0 3px var(--sky-light);
+}
+.prompt.is-entering { animation: prompt-in 0.25s ease; }
+@keyframes prompt-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 130px;
+  margin-top: 16px;
+  padding: 14px;
+  font: inherit;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--paper);
+  border: var(--px) solid var(--ink);
+  resize: vertical;
+}
+textarea:focus-visible { outline: 3px dashed var(--duck); outline-offset: 3px; }
+
+.hint { margin: 8px 0 18px; font-size: 14px; color: var(--muted); }
+
+/* ---------- Completion ---------- */
+.stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 18px 0; }
+.stat {
+  flex: 1 1 130px;
+  padding: 12px;
+  text-align: center;
+  color: #1d2333;
+  background: var(--sky-light);
+  border: var(--px) solid var(--ink);
+}
+.stat b { display: block; margin-bottom: 8px; font-size: 16px; }
+
+/* ---------- Responsive & motion ---------- */
+@media (max-width: 520px) {
+  .cabinet { padding: 18px; }
+  .avatar { width: 72px; height: 72px; }
+  .prompt { font-size: 17px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ---------- Form helpers ---------- */
+fieldset.group { min-width: 0; padding: 0; border: 0; }
+.group__label { padding: 0; margin-bottom: 10px; font-weight: 800; }
+.field-label { display: block; margin-top: 16px; font-size: 14px; color: var(--muted); }
