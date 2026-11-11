@@ -236,17 +236,7 @@ textarea:focus-visible { outline: 3px dashed var(--duck); outline-offset: 3px; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --sky: #141726;
-    --sky-light: #20263f;
-    --grass: #2d5a1b;
-    --grass-dark: #121524;
-    --paper: #1c2136;
-    --ink: #f2efe4;
-    --muted: #a9b0c7;
-  }
-}
+
 
 /* ---------- Form helpers ---------- */
 fieldset.group { min-width: 0; padding: 0; border: 0; }
