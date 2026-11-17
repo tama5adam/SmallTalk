@@ -51,12 +51,12 @@ export default {
 
     const out = new FormData();
     out.append("file", audio, audio.name || "speech.webm");
-    out.append("model", "whisper-1");
+    out.append("model", "whisper-large-v3-turbo");
     out.append("language", "en");
     out.append("temperature", "0");
     out.append("prompt", "Verbatim transcript of a Cambridge English speaking exam candidate, including hesitations and grammar errors.");
 
-    const res = await fetch("https://api.openai.com/v1/audio/transcriptions", {
+    const res = await fetch("[https://api.groq.com/openai/v1/audio/transcriptions](https://api.groq.com/openai/v1/audio/transcriptions)", {
       method: "POST",
       headers: { Authorization: `Bearer ${env.OPENAI_API_KEY}` },
       body: out,
