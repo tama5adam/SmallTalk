@@ -6,7 +6,7 @@
   "use strict";
 
   /* ---------- Speaking config ---------- */
-  const WORKER_URL = "https://smalltalk.adamtamasmone.workers.dev/";   // e.g. "https://smalltalk-whisper.YOURNAME.workers.dev" (empty = typing only)
+  const WORKER_URL = "https://smalltalk.adamtamasmone.workers.dev";   // e.g. "https://smalltalk-whisper.YOURNAME.workers.dev" (empty = typing only)
   const TUTOR_EMAIL = "adamtamasmone@gmail.com";  // address the "Email tutor" button writes to
 
   /* ---------- Config ---------- */
