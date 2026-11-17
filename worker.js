@@ -66,8 +66,10 @@ export default {
       headers: { Authorization: `Bearer ${env.OPENAI_API_KEY}` },
       body: out,
     });
-    if (!res.ok) return reply({ error: "Upstream transcription error" }, 502);
-
+if (!res.ok) {
+  const errText = await res.text();
+  return reply({ error: `Groq (${res.status}): ${errText}` }, 502);
+}
     const data = await res.json();
     return reply({ text: data.text || "" });
   },
