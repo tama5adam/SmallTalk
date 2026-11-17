@@ -85,4 +85,56 @@ window.SMALLTALK_DATA = {
       "She would have accepted the offer had it not been for the relocation clause."
     ]
   }
+  
+};
+
+/*
+ * Cambridge Speaking Simulator content
+ * part1: topic sets (3 questions each) | part2: two photos + task
+ * part3: collaborative task + options + Part 4 discussion questions
+ */
+window.SMALLTALK_SPEAKING = {
+  b2: {
+    part1: [
+      { topic: "Free time", questions: ["What do you enjoy doing at weekends?", "Tell me about a hobby you would like to try.", "How do you usually spend time with your friends?"] },
+      { topic: "Study and work", questions: ["What are you studying, and why did you choose it?", "What kind of job would you like to have in the future?", "Do you prefer studying alone or with other people?"] },
+      { topic: "Travel", questions: ["Where did you go on your last holiday?", "Do you prefer city breaks or beach holidays?", "What place in your country would you recommend to a visitor?"] }
+    ],
+    part2: [
+      { task: "Compare the two photographs and say why the people might have chosen to travel in these ways.",
+        photos: [{ alt: "A crowded commuter train at rush hour", src: "" }, { alt: "A person cycling along a quiet country road", src: "" }] },
+      { task: "Compare the two photographs and say how the people might be feeling in these situations.",
+        photos: [{ alt: "Students revising together in a library", src: "" }, { alt: "A student studying alone at home late at night", src: "" }] }
+    ],
+    part3: [
+      { task: "Talk about how each idea could encourage more people to use public transport, then decide which two would be most effective.",
+        options: ["Cheaper tickets", "More frequent services", "Free Wi-Fi on board", "Safer bus stops", "Real-time travel apps"],
+        discussion: ["Why do some people prefer to use their own car?", "How could cities reduce traffic in the future?", "Do you think public transport should be free? Why or why not?"] },
+      { task: "Talk about how useful each activity could be for helping new students feel welcome, then decide which two are best.",
+        options: ["A campus tour", "A welcome party", "A buddy system", "An online forum", "A free lunch"],
+        discussion: ["How important is it to make friends at university?", "What makes a good teacher?", "Is it better to study in your own country or abroad?"] }
+    ]
+  },
+
+  c1: {
+    part1: [
+      { topic: "Technology", questions: ["How has technology changed the way you work or study?", "Do you think we rely too heavily on our phones?", "What new technology are you most looking forward to?"] },
+      { topic: "Work and career", questions: ["What qualities do you think make someone successful at work?", "How important is job satisfaction compared with salary?", "Would you ever consider working abroad?"] },
+      { topic: "Culture and identity", questions: ["What traditions are important in your family or community?", "How far do you think language shapes identity?", "Is it important to preserve local customs?"] }
+    ],
+    part2: [
+      { task: "Compare the two photographs and say what challenges the people might face, and how they might overcome them.",
+        photos: [{ alt: "A surgeon operating with robotic equipment", src: "" }, { alt: "A farmer working a field by hand", src: "" }] },
+      { task: "Compare the two photographs and say what the people might be gaining and losing in these situations.",
+        photos: [{ alt: "A family eating dinner while all looking at phones", src: "" }, { alt: "A group hiking together with no phones", src: "" }] }
+    ],
+    part3: [
+      { task: "Discuss how each factor could influence a company's decision to introduce a four-day working week, then decide which is most significant.",
+        options: ["Employee wellbeing", "Productivity", "Customer expectations", "Operating costs", "Competitors' practices"],
+        discussion: ["Is flexible working likely to widen or narrow the gap between different types of job?", "To what extent should employers be responsible for their staff's wellbeing?", "How might work look in thirty years' time?"] },
+      { task: "Discuss how effective each measure might be in protecting a city's cultural heritage, then decide which would have the greatest long-term impact.",
+        options: ["Stricter planning laws", "Tourist taxes", "School education programmes", "Public funding for restoration", "Digital archives"],
+        discussion: ["Should heritage ever take priority over development?", "How can tourism both help and harm local culture?", "Who should pay for preserving historic sites?"] }
+    ]
+  }
 };
