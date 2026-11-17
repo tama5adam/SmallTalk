@@ -2,9 +2,9 @@
  * SmallTalk – Cloudflare Worker: passcode-gated Whisper proxy
  *
  * Dashboard → Workers → your worker → Settings → Variables and Secrets:
- *   OPENAI_API_KEY   (secret)  your OpenAI API key
+ *   OPENAI_API_KEY   (secret)  your Groq (or OpenAI) API key
  *   PASSCODE         (secret)  shared passcode you give your students
- *   ALLOWED_ORIGINS  (text)    comma-separated, e.g. https://YOU.github.io,http://localhost:8000
+ *   ALLOWED_ORIGINS  (text)    comma-separated, e.g. https://tama5adam.github.io,http://localhost:5500,http://127.0.0.1:5500
  *
  * The browser never sees the API key. Requests need the right Origin AND passcode.
  */
@@ -14,7 +14,12 @@ const enc = new TextEncoder();
 function safeEqual(a, b) {
   const x = enc.encode(a);
   const y = enc.encode(b);
-  return x.length === y.length && crypto.subtle.timingSafeEqual(x, y);
+  if (x.length !== y.length) return false;
+  let diff = 0;
+  for (let i = 0; i < x.length; i++) {
+    diff |= x[i] ^ y[i];
+  }
+  return diff === 0;
 }
 
 export default {
@@ -56,7 +61,7 @@ export default {
     out.append("temperature", "0");
     out.append("prompt", "Verbatim transcript of a Cambridge English speaking exam candidate, including hesitations and grammar errors.");
 
-    const res = await fetch("[https://api.groq.com/openai/v1/audio/transcriptions](https://api.groq.com/openai/v1/audio/transcriptions)", {
+    const res = await fetch("https://api.groq.com/openai/v1/audio/transcriptions", {
       method: "POST",
       headers: { Authorization: `Bearer ${env.OPENAI_API_KEY}` },
       body: out,
