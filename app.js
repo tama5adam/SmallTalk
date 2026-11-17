@@ -169,10 +169,8 @@
   }
 
   /* ---------- Markdown export ---------- */
-
-  if (session.mode === "speaking") return buildSpeakingMarkdown(now);
-
   function buildMarkdown(now) {
+    if (session.mode === "speaking") return buildSpeakingMarkdown(now);
     const header = [
       "# SmallTalk Session",
       "",
